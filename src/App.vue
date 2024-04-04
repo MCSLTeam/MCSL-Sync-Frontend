@@ -1,67 +1,24 @@
 <template>
-  <n-space vertical>
-    <n-switch v-model:value="collapsed" />
-    <n-layout has-sider>
-      <n-layout-sider
-          bordered
-          collapse-mode="width"
-          :collapsed-width="64"
-          :width="240"
-          :collapsed="collapsed"
-          show-trigger
-          @collapse="collapsed = true"
-          @expand="collapsed = false"
-      >
-        <n-flex>
-          <img
-              src="https://img.fastmirror.net/s/2023/12/03/656c4416b04b8.png"
-              alt="MCSL Logo"
-              style="max-width:100px; width: 100%; height: auto; margin: 0 auto"
-          >
-        </n-flex>
-        <n-menu
-            v-model:value="activeKey"
-            :collapsed="collapsed"
-            :collapsed-width="64"
-            :collapsed-icon-size="22"
-            :options="menuOptions"
-        />
-      </n-layout-sider>
-      <n-layout>
-        <router-view></router-view>
-      </n-layout>
-    </n-layout>
-  </n-space>
+  <n-split direction="horizontal" default-size=0.17>
+    <template #1>
+      <Menu />
+    </template>
+    <template #2>
+      <n-split direction="vertical" min=0.92 max=0.92 default-size=0.92>
+        <template #1>
+          <router-view />
+        </template>
+        <template #2>
+          <Footer />
+        </template>
+      </n-split>
+    </template>
+  </n-split>
 </template>
 
 <script setup>
-import {h, ref} from "vue";
-import { NIcon, NMenu, NSpace, NLayout, NLayoutSider, NFlex } from "naive-ui";
-import { RouterLink } from "vue-router";
-import {
-  LogOutOutline as HomeIcon
-} from "@vicons/ionicons5";
-
-let activeKey = ref(null)
-let collapsed = ref(true)
-
-function renderIcon(icon) {
-  return () => h(NIcon, null, {default: () => h(icon)});
-}
-
-const menuOptions = [
-  {
-    label: () => h(
-        RouterLink,
-        {
-          to: {
-            name: "Home",
-          }
-        },
-        {default: () => "回家"}
-    ),
-    key: "go-back-home",
-    icon: renderIcon(HomeIcon)
-  }
-];
+import { NSplit } from "naive-ui";
+import { RouterView } from "vue-router";
+import Menu from "./components/Menu.vue";
+import Footer from "./components/Footer.vue";
 </script>
