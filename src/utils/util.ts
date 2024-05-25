@@ -52,6 +52,10 @@ export function getCoreIcon(name: string) {
                 return 'https://img.fastmirror.net/s/2024/05/25/6651673e7e949.png';
             case 'Waterfall':
                 return 'https://img.fastmirror.net/s/2024/05/25/665167dfcd667.png';
+            case 'CatServer':
+                return 'https://img.fastmirror.net/s/2024/05/25/66516c242762e.png';
+            case 'CraftBukkit':
+                return 'https://img.fastmirror.net/s/2024/05/25/66516c22db66a.png';
             default:
                 return 'https://img.fastmirror.net/s/2024/05/25/6651673f05405.png';
         }
