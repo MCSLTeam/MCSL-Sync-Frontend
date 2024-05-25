@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import Loading from '../components/Loading.vue'
-import {ref} from "vue";
+import { ref } from "vue";
 import LoadingStatus from "../utils/enums/LoadingStatus.ts";
-import {BASE_URL} from "../main.ts";
+import { BASE_URL } from "../main.ts";
 import Error from "../components/Error.vue";
 import axios from "axios";
-import {getCoreIcon, getCoreType} from "../utils/util.ts";
+import { getCoreIcon, getCoreType } from "../utils/util.ts";
 import router from "../router";
 
 const loadStatus = ref(LoadingStatus.LOADING);
@@ -24,7 +24,7 @@ axios.get(BASE_URL + 'core').then(res => {
 </script>
 
 <template>
-  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心中..."/>
+  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心中..." />
   <div class="cores" v-else-if="loadStatus === LoadingStatus.SUCCESS">
     <div class="core" v-for="core in coreList" @click="router.push('/core/' + core)">
       <img :src="getCoreIcon(core)" alt="">
@@ -34,8 +34,7 @@ axios.get(BASE_URL + 'core').then(res => {
       </div>
     </div>
   </div>
-  <Error v-else
-         :message="'加载核心列表失败！<br/>' + loadStatus"/>
+  <Error v-else :message="'加载核心列表失败！<br/>' + loadStatus" />
 </template>
 
 <style scoped>

@@ -31,7 +31,7 @@ defineProps({
       <div></div>
       <div></div>
     </div>
-    <h2 :style="{fontSize: textSize}" v-html="message"></h2>
+    <h2 :style="{ fontSize: textSize }" v-html="message"></h2>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ defineProps({
 }
 
 .loading,
-.loading > div {
+.loading>div {
   position: relative;
   box-sizing: border-box;
 }
@@ -58,7 +58,7 @@ defineProps({
   animation: 0.5s ease-in-out both fadeIn;
 }
 
-.loading > div {
+.loading>div {
   display: inline-block;
   float: none;
   background-color: currentColor;
@@ -70,7 +70,7 @@ defineProps({
   height: 18px;
 }
 
-.loading > div {
+.loading>div {
   position: absolute;
   width: 6px;
   height: 6px;
@@ -80,97 +80,97 @@ defineProps({
   animation: ball-8bits 1s ease infinite;
 }
 
-.loading > div:nth-child(1) {
+.loading>div:nth-child(1) {
   top: -100%;
   left: 0;
   animation-delay: 0.0625s;
 }
 
-.loading > div:nth-child(2) {
+.loading>div:nth-child(2) {
   top: -100%;
   left: 33.3333333333%;
   animation-delay: 0.125s;
 }
 
-.loading > div:nth-child(3) {
+.loading>div:nth-child(3) {
   top: -66.6666666667%;
   left: 66.6666666667%;
   animation-delay: 0.1875s;
 }
 
-.loading > div:nth-child(4) {
+.loading>div:nth-child(4) {
   top: -33.3333333333%;
   left: 100%;
   animation-delay: 0.25s;
 }
 
-.loading > div:nth-child(5) {
+.loading>div:nth-child(5) {
   top: 0;
   left: 100%;
   animation-delay: 0.3125s;
 }
 
-.loading > div:nth-child(6) {
+.loading>div:nth-child(6) {
   top: 33.3333333333%;
   left: 100%;
   animation-delay: 0.375s;
 }
 
-.loading > div:nth-child(7) {
+.loading>div:nth-child(7) {
   top: 66.6666666667%;
   left: 66.6666666667%;
   animation-delay: 0.4375s;
 }
 
-.loading > div:nth-child(8) {
+.loading>div:nth-child(8) {
   top: 100%;
   left: 33.3333333333%;
   animation-delay: 0.5s;
 }
 
-.loading > div:nth-child(9) {
+.loading>div:nth-child(9) {
   top: 100%;
   left: 0;
   animation-delay: 0.5625s;
 }
 
-.loading > div:nth-child(10) {
+.loading>div:nth-child(10) {
   top: 100%;
   left: -33.3333333333%;
   animation-delay: 0.625s;
 }
 
-.loading > div:nth-child(11) {
+.loading>div:nth-child(11) {
   top: 66.6666666667%;
   left: -66.6666666667%;
   animation-delay: 0.6875s;
 }
 
-.loading > div:nth-child(12) {
+.loading>div:nth-child(12) {
   top: 33.3333333333%;
   left: -100%;
   animation-delay: 0.75s;
 }
 
-.loading > div:nth-child(13) {
+.loading>div:nth-child(13) {
   top: 0;
   left: -100%;
   animation-delay: 0.8125s;
 }
 
-.loading > div:nth-child(14) {
+.loading>div:nth-child(14) {
   top: -33.3333333333%;
   left: -100%;
   animation-delay: 0.875s;
 }
 
-.loading > div:nth-child(15) {
+.loading>div:nth-child(15) {
   top: -66.6666666667%;
   left: -66.6666666667%;
   animation-delay: 0.9375s;
 }
 
-.loading > div:nth-child(16) {
+.loading>div:nth-child(16) {
   top: -100%;
   left: -33.3333333333%;
   animation-delay: 1s;
@@ -180,9 +180,11 @@ defineProps({
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 1;
   }
+
   50.1% {
     opacity: 0;
   }

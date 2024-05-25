@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Cores from "../views/Cores.vue";
 import PageNotFound from "../views/PageNotFound.vue";
 import VersionList from "../views/VersionList.vue";

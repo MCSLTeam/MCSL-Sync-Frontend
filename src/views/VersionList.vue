@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Loading from '../components/Loading.vue'
-import {Ref, ref} from "vue";
+import { Ref, ref } from "vue";
 import LoadingStatus from "../utils/enums/LoadingStatus.ts";
-import {BASE_URL} from "../main.ts";
+import { BASE_URL } from "../main.ts";
 import Error from "../components/Error.vue";
 import axios from "axios";
 import router from "../router";
 import Back from "../components/Back.vue";
-import {getCoreIcon} from "../utils/util.ts";
+import { getCoreIcon } from "../utils/util.ts";
 
 const core = router.currentRoute.value.params.core;
 let version: Ref<String | undefined> = ref(undefined);
@@ -67,15 +67,15 @@ function changeVersion(e: Event) {
 </script>
 
 <template>
-  <Back/>
-  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心版本列表中..."/>
+  <Back />
+  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心版本列表中..." />
   <div class="version-container" v-else-if="loadStatus === LoadingStatus.SUCCESS">
     <select :value="version" @change="changeVersion">
       <option v-for="version in supportedVersions" :value="version"> {{ version }}</option>
     </select>
     <div class="versions">
       <div class="version" v-for="ver in versionList" @click="router.push('/core/' + core + '/' + version + '/' + ver)">
-        <img :src="getCoreIcon(<string>core)" alt=""/>
+        <img :src="getCoreIcon(<string>core)" alt="" />
         <div>
           <h2>{{ ver }}</h2>
           <h3>支持版本：{{ version }}</h3>
@@ -83,8 +83,7 @@ function changeVersion(e: Event) {
       </div>
     </div>
   </div>
-  <Error v-else
-         :message="'加载核心版本列表失败！<br/>' + loadStatus"/>
+  <Error v-else :message="'加载核心版本列表失败！<br/>' + loadStatus" />
 </template>
 
 <style scoped>

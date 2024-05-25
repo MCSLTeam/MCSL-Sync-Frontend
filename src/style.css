@@ -12,7 +12,9 @@
     font-family: var(--font-sans);
 }
 
-body, html, #app {
+body,
+html,
+#app {
     height: 100%;
     width: 100%;
 }

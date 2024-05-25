@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <button @click="router.push(to)" class="back-btn"><i class="fa fa-angle-left fa-lg"/></button>
+  <button @click="router.push(to)" class="back-btn"><i class="fa fa-angle-left fa-lg" /></button>
 </template>
 
 <style scoped>

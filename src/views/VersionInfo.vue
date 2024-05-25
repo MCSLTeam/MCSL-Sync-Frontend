@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Loading from '../components/Loading.vue'
-import {ref} from "vue";
+import { ref } from "vue";
 import LoadingStatus from "../utils/enums/LoadingStatus.ts";
-import {BASE_URL} from "../main.ts";
+import { BASE_URL } from "../main.ts";
 import Error from "../components/Error.vue";
 import axios from "axios";
 import router from "../router";
 import Back from "../components/Back.vue";
-import {getCoreIcon} from "../utils/util.ts";
+import { getCoreIcon } from "../utils/util.ts";
 
 const core = router.currentRoute.value.params.core;
 let supportedVersion = router.currentRoute.value.params.supportedVersion;
@@ -50,10 +50,10 @@ function download() {
 </script>
 
 <template>
-  <Back :to="'/core/' + core"/>
-  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心信息中..."/>
+  <Back :to="'/core/' + core" />
+  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心信息中..." />
   <div class="version-info" v-else-if="loadStatus === LoadingStatus.SUCCESS">
-    <img :src="getCoreIcon(<string>core)" alt=""/>
+    <img :src="getCoreIcon(<string>core)" alt="" />
     <div>
       <h2>{{ version }}</h2>
       <h3>核心类型：{{ core }}</h3>
@@ -64,8 +64,7 @@ function download() {
       </button>
     </div>
   </div>
-  <Error v-else
-         :message="'加载核心版本列表失败！<br/>' + loadStatus"/>
+  <Error v-else :message="'加载核心版本列表失败！<br/>' + loadStatus" />
 </template>
 
 <style scoped>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import router from "../router";
-import {randomNum} from "../utils/util.ts";
+import { randomNum } from "../utils/util.ts";
 import Back from "../components/Back.vue";
 
 const countdown = ref('?');
@@ -43,7 +43,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Back/>
+  <Back />
   <div class="pagenotfound-container">
     <h2>404 - 页面未找到</h2>
     <h3>将在 <span>{{ countdown }}</span> 秒后自动跳转到主页</h3>

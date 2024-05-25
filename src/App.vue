@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {onMounted, onUnmounted, ref} from "vue";
-import {mainLoadingStatus, statistics} from "./main.ts";
+import { onMounted, onUnmounted, ref } from "vue";
+import { mainLoadingStatus, statistics } from "./main.ts";
 import Loading from './components/Loading.vue'
 import LoadingStatus from "./utils/enums/LoadingStatus.ts";
 import Error from "./components/Error.vue";
@@ -47,25 +47,24 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Loading v-if="mainLoadingStatus === LoadingStatus.LOADING"/>
+  <Loading v-if="mainLoadingStatus === LoadingStatus.LOADING" />
   <div class="container" :class="{ 'container-big': router.currentRoute.value.fullPath !== '/' }"
-       v-else-if="mainLoadingStatus === LoadingStatus.SUCCESS">
+    v-else-if="mainLoadingStatus === LoadingStatus.SUCCESS">
     <div class="title">
       <h1>欢迎使用</h1>
       <h2 ref="title">MCSL Sync</h2>
       <h4>一个MC服务器核心镜像同步工具</h4>
       <p>请在右侧选择一个服务端以下载</p>
       <p>或者 <a href="https://apidoc.sync.mcsl.com.cn/">访问Api文档</a> | <a @click="router.push('/nodes')"
-                                                                              href="javascript:void(0)">节点列表</a></p>
+          href="javascript:void(0)">节点列表</a></p>
       <h6>MCSL-Sync-Frontend v{{ frontendVersion }}<br>MCSL-Sync-Backend&ensp;{{ statistics.version }}</h6>
       <h5>© 2022 - {{ new Date().getFullYear() }} <a href="https://mcsl.com.cn/">MCSL</a>开发组 保留所有权利。</h5>
     </div>
     <div class="router-container">
-      <router-view/>
+      <router-view />
     </div>
   </div>
-  <Error v-else
-         :message="'无法加载 MCSL Sync！<br/>' + mainLoadingStatus"/>
+  <Error v-else :message="'无法加载 MCSL Sync！<br/>' + mainLoadingStatus" />
 </template>
 
 <style scoped>
@@ -112,7 +111,8 @@ onUnmounted(() => {
   color: var(--text-color-regular);
 }
 
-.title h5, .title h5 a {
+.title h5,
+.title h5 a {
   font-size: 1rem;
   margin: 0;
   font-weight: 500;

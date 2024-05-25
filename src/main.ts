@@ -1,11 +1,11 @@
-import {createApp, ref} from 'vue'
+import { createApp, ref } from 'vue'
 import './style.css'
 import App from './App.vue'
 import router from './router'
 import LoadingStatus from "./utils/enums/LoadingStatus.ts";
 import axios from 'axios';
 
-export const BASE_URL = "http://38.46.30.116:7002/";
+export const BASE_URL = "http://127.0.0.1:4523/";
 
 export let mainLoadingStatus = ref(LoadingStatus.LOADING);
 

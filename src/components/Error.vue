@@ -94,7 +94,7 @@ defineProps({
       <div></div>
       <div></div>
     </div>
-    <h2 :style="{fontSize: textSize}" v-html="message"></h2>
+    <h2 :style="{ fontSize: textSize }" v-html="message"></h2>
   </div>
 </template>
 
