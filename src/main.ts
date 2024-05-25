@@ -5,7 +5,7 @@ import router from './router'
 import LoadingStatus from "./utils/enums/LoadingStatus.ts";
 import axios from 'axios';
 
-export const BASE_URL = "https://example.com/";
+export const BASE_URL = "http://38.46.30.116:7002/";
 
 export let mainLoadingStatus = ref(LoadingStatus.LOADING);
 

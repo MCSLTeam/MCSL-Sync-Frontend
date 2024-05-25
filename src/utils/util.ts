@@ -14,6 +14,8 @@ export function getCoreIcon(name: string) {
     return '/assets/img/cores/' + (() => {
         switch (name) {
             case 'Arclight':
+            case 'Lightfall':
+            case 'LightfallClient':
                 return 'arclight.png';
             case 'Banner':
                 return 'banner.png';
@@ -30,12 +32,14 @@ export function getCoreIcon(name: string) {
             case 'Mohist':
                 return 'mohist.png'
             case 'Paper':
+            case 'Travertine':
                 return 'paper.png'
             case 'Pufferfish':
             case 'Pufferfish+':
             case 'Pufferfish+Purpur':
                 return 'pufferfish.png';
             case 'Purpur':
+            case 'Purformance':
                 return 'purpur.png';
             case 'Spigot':
                 return 'spigot.png';
@@ -59,7 +63,7 @@ export function getCoreType(name: string) {
         case 'Arclight':
         case 'Banner':
         case 'Mohist':
-        case 'PurformanceCatServer':
+        case 'CatServer':
             return '混合端';
         case 'BungeeCord':
         case 'Lightfall':
@@ -75,6 +79,7 @@ export function getCoreType(name: string) {
         case "Pufferfish":
         case "Pufferfish+":
         case "Pufferfish+Purpur":
+        case "Purformance":
         case "Purpur":
         case "Spigot":
             return '插件端';

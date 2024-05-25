@@ -1,7 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
 import Cores from "../views/Cores.vue";
-import PageNotFound from "../components/PageNotFound.vue";
+import PageNotFound from "../views/PageNotFound.vue";
 import VersionList from "../views/VersionList.vue";
+import VersionInfo from "../views/VersionInfo.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,8 +20,12 @@ const router = createRouter({
             component: VersionList,
         },
         {
-            path: "/core/:core/:version",
+            path: "/core/:core",
             component: VersionList,
+        },
+        {
+            path: "/core/:core/:supportedVersion/:version",
+            component: VersionInfo,
         },
         {
             path: "/:pathMatch(.*)*",
@@ -33,10 +38,10 @@ const router = createRouter({
     ],
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _from, next) => {
     // 页面标题
     if (to.meta.title !== undefined) {
-        document.title = to.meta.title
+        document.title = <string>to.meta.title;
     }
     next();
 })

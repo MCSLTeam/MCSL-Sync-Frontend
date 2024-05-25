@@ -55,7 +55,8 @@ onUnmounted(() => {
       <h2 ref="title">MCSL Sync</h2>
       <h4>一个MC服务器核心镜像同步工具</h4>
       <p>请在右侧选择一个服务端以下载</p>
-      <p>或者 <a href="https://apidoc.sync.mcsl.com.cn/">访问Api文档</a> | <a @click="router.push('/nodes')" href="javascript:void(0)">节点列表</a></p>
+      <p>或者 <a href="https://apidoc.sync.mcsl.com.cn/">访问Api文档</a> | <a @click="router.push('/nodes')"
+                                                                              href="javascript:void(0)">节点列表</a></p>
       <h6>MCSL-Sync-Frontend v{{ frontendVersion }}<br>MCSL-Sync-Backend&ensp;{{ statistics.version }}</h6>
       <h5>© 2022 - {{ new Date().getFullYear() }} <a href="https://mcsl.com.cn/">MCSL</a>开发组 保留所有权利。</h5>
     </div>
@@ -152,50 +153,16 @@ onUnmounted(() => {
   transition: width 0.5s ease-in-out;
 }
 
-@media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    width: 100%;
-    height: calc(100% - 4rem);
-    padding: 2rem;
-  }
-
-  .title h1, .title h4 {
-    display: none;
-  }
-
-  .title h2 {
-    font-size: 2.5rem;
-  }
-
-  .title p {
-    font-size: 1rem;
-    text-align: center;
-  }
-
-  .title h5, .title h5 a {
-    font-size: 0.7rem;
-  }
-
-  .router-container {
-    width: 65%;
-    height: calc(100% - 13.5rem);
-    padding: 1rem;
-  }
+.container-big .title {
+  width: 0;
+  opacity: 0;
 }
 
-@media screen and (min-width: 768px) {
-  .container-big .title {
-    width: 0;
-    opacity: 0;
-  }
+.container-big .title * {
+  text-wrap: nowrap;
+}
 
-  .container-big .title * {
-    text-wrap: nowrap;
-  }
-
-  .container-big .router-container {
-    width: 100%;
-  }
+.container-big .router-container {
+  width: 100%;
 }
 </style>
