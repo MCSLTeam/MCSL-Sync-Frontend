@@ -55,7 +55,7 @@ onUnmounted(() => {
       <h2 ref="title">MCSL Sync</h2>
       <h4>一个MC服务器核心镜像同步工具</h4>
       <p>请在右侧选择一个服务端以下载</p>
-      <p>或者 <a href="https://apidoc.sync.mcsl.com.cn/">访问Api文档</a> | <a @click="router.push('/nodes')"
+      <p>或者 <a href="https://apidoc.sync.mcsl.com.cn/">访问 API 文档</a> | <a @click="router.push('/nodes')"
           href="javascript:void(0)">节点列表</a></p>
       <h6>MCSL-Sync-Frontend v{{ frontendVersion }}<br>MCSL-Sync-Backend&ensp;{{ statistics.version }}</h6>
       <h5>© 2022 - {{ new Date().getFullYear() }} <a href="https://mcsl.com.cn/">MCSL</a>开发组 保留所有权利。</h5>
