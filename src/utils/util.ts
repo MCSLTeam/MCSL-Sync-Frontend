@@ -11,49 +11,49 @@ export function randomNum(min?: any, max?: any) {
 }
 
 export function getCoreIcon(name: string) {
-    return '/assets/img/cores/' + (() => {
+    return (() => {
         switch (name) {
             case 'Arclight':
             case 'Lightfall':
             case 'LightfallClient':
-                return 'arclight.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651679deb1cc.png';
             case 'Banner':
-                return 'banner.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651679e32236.png';
             case 'BungeeCord':
-                return 'bungeecord.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651679eb6feb.png';
             case 'Fabric':
-                return 'fabric.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651679e74038.png';
             case 'Folia':
-                return 'folia.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651679ef0a9a.png';
             case 'Forge':
-                return 'forge.jpg';
+                return 'https://img.fastmirror.net/s/2024/05/25/665168acdb831.jpg';
             case 'Leaves':
-                return 'leaves.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651684ae221c.png';
             case 'Mohist':
-                return 'mohist.png'
+                return 'https://img.fastmirror.net/s/2024/05/25/6651684b3cfe8.png'
             case 'Paper':
             case 'Travertine':
-                return 'paper.png'
+                return 'https://img.fastmirror.net/s/2024/05/25/6651684c03a75.png'
             case 'Pufferfish':
             case 'Pufferfish+':
             case 'Pufferfish+Purpur':
-                return 'pufferfish.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651684bb75de.png';
             case 'Purpur':
             case 'Purformance':
-                return 'purpur.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651684b7c635.png';
             case 'Spigot':
-                return 'spigot.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651673e904ba.png';
             case 'SpongeForge':
             case 'SpongeVanilla':
-                return 'sponge.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651673e4660a.png';
             case 'Vanilla':
-                return 'vanilla.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651673f5419b.png';
             case 'Velocity':
-                return 'velocity.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651673e7e949.png';
             case 'Waterfall':
-                return 'waterfall.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/665167dfcd667.png';
             default:
-                return 'unknown.png';
+                return 'https://img.fastmirror.net/s/2024/05/25/6651673f05405.png';
         }
     })();
 }
