@@ -82,7 +82,6 @@ function download() {
   padding: 1rem;
   border: 1.5px solid #dddddd55;
   transition: ease-in-out 0.3s;
-  cursor: pointer;
 }
 
 .version-info img {
