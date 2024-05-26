@@ -52,8 +52,8 @@ onUnmounted(() => {
     v-else-if="mainLoadingStatus === LoadingStatus.SUCCESS">
     <div class="title">
       <h1>欢迎使用</h1>
-      <h2 ref="title">MCSL Sync</h2>
-      <h4>一个MC服务器核心镜像同步工具</h4>
+      <h2 ref="title">MCSL-Sync</h2>
+      <h4>一个MC服务器核心镜像站</h4>
       <p>请在右侧选择一个服务端以下载</p>
       <p>或者 <a href="https://apidoc.sync.mcsl.com.cn/">访问 API 文档</a> | <a @click="router.push('/nodes')"
           href="javascript:void(0)">节点列表</a></p>

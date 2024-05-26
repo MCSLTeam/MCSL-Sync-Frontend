@@ -2,7 +2,7 @@
 defineProps({
   message: {
     type: String,
-    default: 'MCSL Sync 加载失败...'
+    default: 'MCSL-Sync 加载失败...'
   },
   textSize: {
     type: Number,
