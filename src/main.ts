@@ -5,7 +5,7 @@ import router from './router'
 import LoadingStatus from "./utils/enums/LoadingStatus.ts";
 import axios from 'axios';
 
-export const BASE_URL = "http://127.0.0.1:4523/";
+export const BASE_URL = "https://sync.mcsl.com.cn/api/";
 
 export let mainLoadingStatus = ref(LoadingStatus.LOADING);
 
