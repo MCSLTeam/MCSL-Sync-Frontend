@@ -1,6 +1,5 @@
 :root {
     --font-sans: "MiSans VF", Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Roboto, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    --font-minecraft: "Minecraft AE Pixel";
     --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
     --text-color-primary: #303133;
     --text-color-regular: #606266;
@@ -27,9 +26,6 @@ body {
     font-family: var(--font-mono);
 }
 
-.font-minecraft {
-    font-family: var(--font-minecraft);
-}
 
 #app {
     display: flex;
@@ -57,14 +53,4 @@ body {
 
 .el-form-item__content {
     gap: 5px;
-}
-
-@font-face {
-    font-family: "MiSans VF";
-    src: url("/assets/fonts/MiSans VF.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "Minecraft AE Pixel";
-    src: url("/assets/fonts/Minecraft AE Pixel.ttf") format("truetype");
 }
