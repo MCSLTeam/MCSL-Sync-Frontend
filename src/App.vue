@@ -191,6 +191,7 @@ onUnmounted(() => {
     min-width: 0;
     width: calc(100% - 4rem);
     height: calc(100% - 15rem);
+    max-height: unset;
   }
 }
 
