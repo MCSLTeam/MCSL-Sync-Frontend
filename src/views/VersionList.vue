@@ -102,7 +102,7 @@ function changeVersion(e: Event) {
   border-radius: 1.5rem;
   background: #ffffffdd;
   backdrop-filter: blur(5px);
-  width: calc(100% - 2rem);
+  width: calc(100% - 2rem - 3px);
   height: 4rem;
   gap: 1rem;
   padding: 1rem;
@@ -162,6 +162,7 @@ function changeVersion(e: Event) {
   background: #ffffff00;
   color: var(--text-color-regular);
   transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .version-container select:hover {

@@ -76,7 +76,7 @@ export function getCoreType(name: string) {
         case 'Velocity':
         case 'Waterfall':
             return '群组端';
-        case 'CraftBukkit':
+        case 'Craftbukkit':
         case "Folia":
         case 'Leaves':
         case "Paper":

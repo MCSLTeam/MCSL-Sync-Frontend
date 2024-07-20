@@ -93,7 +93,6 @@ onUnmounted(() => {
   font-size: 3.5rem;
   font-weight: bold;
   margin: 0;
-  animation: ease-in-out h2ColorChange 10s infinite;
   color: #00000000;
 }
 
