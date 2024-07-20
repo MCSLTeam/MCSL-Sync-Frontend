@@ -88,7 +88,7 @@ function changeVersion(e: Event) {
 
 <style scoped>
 .versions {
-  width: 100%;
+  width: calc(100% - 2rem);
   height: calc(100% - 5rem);
   padding: 1rem;
   overflow: auto;
