@@ -8,7 +8,7 @@ import {statistics} from "../main.ts";
   <div class="node-container">
     <div class="nodes">
       <div class="node" v-for="node in statistics.config.node_list">
-        <h2>{{ node }}</h2>
+        <p>{{ node }}</p>
       </div>
     </div>
   </div>
@@ -31,18 +31,20 @@ import {statistics} from "../main.ts";
   background: #ffffffdd;
   backdrop-filter: blur(5px);
   width: calc(100% - 2rem - 3px);
-  height: 2rem;
+  height: fit-content;
   gap: 1rem;
   padding: 1rem;
   border: 1.5px solid #dddddd55;
   transition: ease-in-out 0.3s;
 }
 
-.node h2 {
+.node p {
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-color-primary);
   margin: 0;
+  width: 100%;
+  word-break: break-all;
 }
 
 .node-container {

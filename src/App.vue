@@ -55,12 +55,11 @@ onUnmounted(() => {
       <h2 ref="title">MCSL-Sync</h2>
       <h4>一个MC服务器核心镜像站</h4>
       <p>请在右侧选择一个服务端以下载</p>
-      <p>
-        或者
-        <a href="https://apidoc.sync.mcsl.com.cn/" target="_blank">访问 API 文档</a>
-        |
-        <router-link to="/nodes">节点列表</router-link>
-      </p>
+      <br>
+      <p>或者</p>
+      <a href="https://apidoc.sync.mcsl.com.cn/" target="_blank">访问 API 文档</a>
+      <span>&nbsp;|&nbsp;</span>
+      <router-link to="/nodes">节点列表</router-link>
       <h6>MCSL-Sync-Frontend v{{ frontendVersion }}<br>MCSL-Sync-Backend&ensp;{{ statistics.version }}</h6>
       <h5>© 2022 - {{ new Date().getFullYear() }} <a href="https://mcsl.com.cn/">MCSL</a>开发组 保留所有权利。</h5>
     </div>
@@ -80,14 +79,26 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: calc(100% - 4rem);
+    padding: 2rem;
+    flex-direction: column;
+  }
 }
 
 .title {
   transition: width 0.5s ease-in-out, opacity 0.2s ease-in-out;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 }
 
 .title h1 {
   font-size: 3rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
   font-weight: 500;
   margin: 0;
   color: var(--text-color-primary);
@@ -95,6 +106,9 @@ onUnmounted(() => {
 
 .title h2 {
   font-size: 3.5rem;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
   font-weight: bold;
   margin: 0;
   color: #00000000;
@@ -102,6 +116,10 @@ onUnmounted(() => {
 
 .title h4 {
   font-size: 1.4rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
   font-weight: 450;
   color: var(--text-color-regular);
   margin: 0 0 1.5rem 0;
@@ -111,25 +129,39 @@ onUnmounted(() => {
   font-size: 0.8rem;
   font-weight: 350;
   margin: 1rem 0;
+  @media (max-width: 768px) {
+    display: none;
+  }
   color: var(--text-color-regular);
 }
 
 .title h5,
 .title h5 a {
   font-size: 1rem;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
   margin: 0;
   font-weight: 500;
   color: var(--text-color-primary);
 }
 
-.title p {
+.title p, .title span {
+  display: inline-block;
   font-size: 1.1rem;
   font-weight: 300;
   color: var(--text-color-regular);
   margin: 0;
 }
 
+.title p, .title br {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
 .title a {
+  display: inline-block;
   text-decoration: none;
   font-weight: 400;
   color: var(--text-color-primary);
@@ -144,7 +176,8 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 32.5rem;
+  height: calc(100% - 5rem);
+  max-height: 32.5rem;
   width: calc(100% - 30rem);
   min-width: 20rem;
   padding: 2rem;
@@ -154,18 +187,25 @@ onUnmounted(() => {
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
   margin: 0.5rem;
   transition: width 0.5s ease-in-out;
+  @media (max-width: 768px) {
+    min-width: 0;
+    width: calc(100% - 4rem);
+    height: calc(100% - 15rem);
+  }
 }
 
-.container-big .title {
-  width: 0;
-  opacity: 0;
-}
+@media (min-width: 768px) {
+  .container-big .title {
+    width: 0;
+    opacity: 0;
+  }
 
-.container-big .title * {
-  text-wrap: nowrap;
-}
+  .container-big .title * {
+    text-wrap: nowrap;
+  }
 
-.container-big .router-container {
-  width: 100%;
+  .container-big .router-container {
+    width: 100%;
+  }
 }
 </style>

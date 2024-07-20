@@ -86,10 +86,9 @@ axios.get(BASE_URL + 'core').then(res => {
   word-break: break-all;
   font-weight: 500;
   color: var(--text-color-primary);
-}
-
-.text-small {
-  font-size: 1rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 }
 
 .core h4 {
@@ -97,6 +96,9 @@ axios.get(BASE_URL + 'core').then(res => {
   font-size: 1rem;
   font-weight: 400;
   color: var(--text-color-secondary);
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 }
 
 .core img {

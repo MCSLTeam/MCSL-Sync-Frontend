@@ -82,11 +82,18 @@ function download() {
   padding: 1rem;
   border: 1.5px solid #dddddd55;
   transition: ease-in-out 0.3s;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .version-info img {
   height: 100%;
   border-radius: 1rem;
+  @media (max-width: 768px) {
+    width: 70%;
+    height: unset;
+  }
 }
 
 .version-info h2 {

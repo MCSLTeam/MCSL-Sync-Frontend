@@ -133,6 +133,9 @@ function changeVersion(e: Event) {
   font-weight: 500;
   color: var(--text-color-primary);
   margin: 0;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 }
 
 .version h3 {
@@ -140,6 +143,9 @@ function changeVersion(e: Event) {
   font-weight: 400;
   color: var(--text-color-secondary);
   margin: 0;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 }
 
 .version-container {
