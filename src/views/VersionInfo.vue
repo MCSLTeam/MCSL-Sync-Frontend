@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Loading from '../components/Loading.vue'
-import { ref } from "vue";
+import {ref} from "vue";
 import LoadingStatus from "../utils/enums/LoadingStatus.ts";
-import { BASE_URL } from "../main.ts";
+import {BASE_URL} from "../main.ts";
 import Error from "../components/Error.vue";
 import axios from "axios";
 import router from "../router";
 import Back from "../components/Back.vue";
-import { getCoreIcon } from "../utils/util.ts";
+import {getCoreIcon} from "../utils/util.ts";
 
 const core = router.currentRoute.value.params.core;
 let supportedVersion = router.currentRoute.value.params.supportedVersion;
@@ -50,21 +50,23 @@ function download() {
 </script>
 
 <template>
-  <Back :to="'/core/' + core" />
-  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心信息中..." />
+  <Back :to="'/core/' + core"/>
+  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心信息中..."/>
   <div class="version-info" v-else-if="loadStatus === LoadingStatus.SUCCESS">
-    <img :src="getCoreIcon(<string>core)" alt="" />
+    <img :src="getCoreIcon(<string>core)" alt=""/>
     <div>
       <h2>{{ version }}</h2>
       <h3>核心类型：{{ core }}</h3>
       <h3>支持版本：{{ supportedVersion }}</h3>
-      <h3>同步时间：{{ versionInfo.build.sync_time === '1970-01-01T00:00:00Z' ? '未同步' : versionInfo.build.sync_time }}</h3>
+      <h3>同步时间：{{
+          versionInfo.build.sync_time === '1970-01-01T00:00:00Z' ? '未同步' : versionInfo.build.sync_time
+        }}</h3>
       <button @click="download" :disabled="versionInfo.build.download_url.startsWith('errorcore')">
         {{ versionInfo.build.download_url.startsWith('errorcore') ? '无法获取下载链接' : '立即下载' }}
       </button>
     </div>
   </div>
-  <Error v-else :message="'加载核心版本列表失败！<br/>' + loadStatus" />
+  <Error v-else :message="'加载核心版本列表失败！<br/>' + loadStatus"/>
 </template>
 
 <style scoped>
@@ -78,20 +80,23 @@ function download() {
   backdrop-filter: blur(5px);
   width: 80%;
   height: fit-content;
+  max-height: calc(100% - 7rem);
   gap: 2rem;
   padding: 1rem;
   border: 1.5px solid #dddddd55;
   transition: ease-in-out 0.3s;
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 0.5rem;
   }
 }
 
 .version-info img {
   height: 100%;
   border-radius: 1rem;
+  flex-shrink: 0;
   @media (max-width: 768px) {
-    width: 70%;
+    width: 50%;
     height: unset;
   }
 }
@@ -101,6 +106,9 @@ function download() {
   font-weight: 500;
   margin: 0.7rem 0;
   color: var(--text-color-primary);
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 }
 
 .version-info h3 {
@@ -108,6 +116,9 @@ function download() {
   font-weight: 450;
   margin: 0.2rem 0;
   color: var(--text-color-regular);
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 }
 
 .version-info button {
@@ -121,6 +132,9 @@ function download() {
   color: var(--text-color-regular);
   transition: ease-in-out 0.3s;
   cursor: pointer;
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
 }
 
 .version-info button:hover {
