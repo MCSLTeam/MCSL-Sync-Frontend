@@ -61,7 +61,7 @@ onUnmounted(() => {
       <span>&nbsp;|&nbsp;</span>
       <router-link to="/nodes">节点列表</router-link>
       <h6>MCSL-Sync-Frontend v{{ frontendVersion }}<br>MCSL-Sync-Backend&ensp;{{ statistics.version }}</h6>
-      <h5>© 2022 - {{ new Date().getFullYear() }} <a href="https://mcsl.com.cn/">MCSL</a>开发组 保留所有权利。</h5>
+      <h5>©2022 - {{ new Date().getFullYear() }} <a href="https://mcsl.com.cn/">MCSL开发组</a> | <a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2023001164号-2</a></h5>
     </div>
     <div class="router-container">
       <router-view/>
@@ -137,10 +137,7 @@ onUnmounted(() => {
 
 .title h5,
 .title h5 a {
-  font-size: 1rem;
-  @media (max-width: 768px) {
-    font-size: 0.8rem;
-  }
+  font-size: 0.8rem;
   margin: 0;
   font-weight: 500;
   color: var(--text-color-primary);
