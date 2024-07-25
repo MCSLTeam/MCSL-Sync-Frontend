@@ -28,12 +28,12 @@ function h2ColorChange(color: number[]) {
   for (let i = 0; i < 3; i++) {
     if (color[i] < 0xff && color[i + 3] === 0) {
       color[i] += 0x01;
-    } else if (color[i] > 0 && color[i + 3] === 1) {
+    } else if (color[i] > 0x55 && color[i + 3] === 1) {
       color[i] -= 0x01;
     } else if (color[i] === 0xff && color[i + 3] === 0) {
       color[i] -= 0x01;
       color[i + 3] = 1;
-    } else if (color[i] === 0 && color[i + 3] === 1) {
+    } else if (color[i] === 0x55 && color[i + 3] === 1) {
       color[i] += 0x01;
       color[i + 3] = 0;
     }
