@@ -56,6 +56,20 @@ export function getCoreIcon(name: string) {
                 return 'https://img.fastmirror.net/s/2024/05/25/66516c242762e.png';
             case 'Craftbukkit':
                 return 'https://img.fastmirror.net/s/2024/05/25/66516c22db66a.png';
+            case 'Akarin':
+                return 'https://img.fastmirror.net/s/2024/07/25/66a2214b5c073.png';
+            case 'NukkitX':
+                return 'https://img.fastmirror.net/s/2024/07/25/66a2219eb31e3.png';
+            case 'Thermos':
+                return 'https://img.fastmirror.net/s/2024/07/25/66a22284b2d93.png';
+            case 'Contigo':
+                return 'https://img.fastmirror.net/s/2024/07/25/66a2239b8c363.jpg';
+            case 'Luminol':
+            case 'LightingLuminol':
+                return 'https://img.fastmirror.net/s/2024/07/25/66a223e527e01.png';
+            case 'Geyser':
+            case 'Floodgate':
+                return 'https://img.fastmirror.net/s/2024/07/25/66a224168f38e.png';
             default:
                 return 'https://img.fastmirror.net/s/2024/05/25/6651673f05405.png';
         }
@@ -68,7 +82,10 @@ export function getCoreType(name: string) {
         case 'Banner':
         case 'Mohist':
         case 'CatServer':
+        case 'Thermos':
+        case 'Contigo':
             return '混合端';
+
         case 'BungeeCord':
         case 'Lightfall':
         case 'LightfallClient':
@@ -76,24 +93,38 @@ export function getCoreType(name: string) {
         case 'Velocity':
         case 'Waterfall':
             return '群组端';
+
         case 'Craftbukkit':
-        case "Folia":
+        case 'Folia':
         case 'Leaves':
-        case "Paper":
-        case "Pufferfish":
-        case "Pufferfish+":
-        case "Pufferfish+Purpur":
-        case "Purformance":
-        case "Purpur":
-        case "Spigot":
+        case 'Paper':
+        case 'Pufferfish':
+        case 'Pufferfish+':
+        case 'Pufferfish+Purpur':
+        case 'Purformance':
+        case 'Purpur':
+        case 'Spigot':
+        case 'Akarin':
+        case 'Luminol':
+        case 'LightingLuminol':
             return '插件端';
+
         case 'Fabric':
         case 'Forge':
         case 'SpongeForge':
         case 'SpongeVanilla':
             return '模组端';
+
         case 'Vanilla':
             return '纯净端';
+
+        case 'NukkitX':
+            return '基岩版';
+
+        case 'Geyser':
+        case 'Floodgate':
+            return '代理端';
+
         default:
             return '未知';
     }
