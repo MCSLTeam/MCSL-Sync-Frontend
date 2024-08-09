@@ -81,7 +81,8 @@ function search(text?: string) {
 .cores {
   display: flex;
   width: 100%;
-  height: calc(100% - 4rem);
+  height: fit-content;
+  max-height: calc(100% - 4rem);
   justify-content: space-evenly;
   align-items: start;
   flex-wrap: wrap;
