@@ -14,12 +14,14 @@
   "dependencies": {
     "axios": "^1.6.8",
     "js-cookie": "^3.0.5",
+    "pinyin": "4.0.0-alpha.2",
     "vite-plugin-package-version": "^1.1.0",
     "vue": "^3.4.21",
     "vue-i18n": "9",
     "vue-router": "4"
   },
   "devDependencies": {
+    "@types/pinyin": "^2.10.2",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
