@@ -94,9 +94,18 @@ function search(text?: string) {
   height: 2rem;
   margin: 1rem 0.5rem;
   outline: none;
-  border: 1px solid var(--text-color-secondary);
+  border: 1.5px solid var(--text-color-secondary);
   border-radius: 0.5rem;
   padding: 0 8px;
+  transition: 0.3s ease-in-out;
+}
+
+.search:hover {
+  border-color: var(--text-color-primary);
+}
+
+.search:focus {
+  border-color: var(--color-primary);
 }
 
 .core {
