@@ -142,10 +142,10 @@ export function formatNodeClientType(type: string) {
     }
 }
 
-export function sortSupportedVersions(core: String, versions: string[]) {
+export function sortSupportedVersions(core: string, versions: string[]) {
     switch (core) {
         case 'Arclight':
-            const getArclightVersion = (version: String) => {
+            const getArclightVersion = (version: string) => {
                 switch (version.toLowerCase()) {
                     case 'feudalkings':
                         return '1.21'
@@ -169,7 +169,7 @@ export function sortSupportedVersions(core: String, versions: string[]) {
                 return compareSemver(getArclightVersion(a), getArclightVersion(b))
             });
         case 'BungeeCord':
-            const getBungeeCordVersion = (version: String) => {
+            const getBungeeCordVersion = (version: string) => {
                 switch (version.toLowerCase()) {
                     case 'latest':
                         return '2.114.514'
@@ -187,7 +187,7 @@ export function sortSupportedVersions(core: String, versions: string[]) {
     }
 }
 
-export function sortCoreVersions(core: String, versions: string[]) {
+export function sortCoreVersions(core: string, versions: string[]) {
     switch (core) {
         case 'BungeeCord':
         case 'CraftBukkit':
@@ -196,7 +196,7 @@ export function sortCoreVersions(core: String, versions: string[]) {
         case 'SpongeForge':
         case 'SpongeVanilla':
         case 'Vanilla':
-            const removeLetters = (version: String) => {
+            const removeLetters = (version: string) => {
                 return version.replace(/[^\d.]+/, '')
             }
             return versions.sort((a, b) => {
@@ -211,7 +211,7 @@ export function sortCoreVersions(core: String, versions: string[]) {
                 return 0
             })
         default:
-            const removeLettersBefore = (version: String) => {
+            const removeLettersBefore = (version: string) => {
                 return version.replace(/[^\d.]+/, '')
             }
             return versions.sort((a, b) => {

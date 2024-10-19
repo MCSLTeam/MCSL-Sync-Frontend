@@ -14,12 +14,12 @@ let version: Ref<String | undefined> = ref(undefined);
 
 const loadStatus = ref(LoadingStatus.LOADING);
 
-let supportedVersions = ref([]);
-const versionList = ref([]);
+let supportedVersions: Ref<string[]> = ref([]);
+const versionList: Ref<string[]> = ref([]);
 
 // 获取支持的版本列表
 axios.get(BASE_URL + 'core/' + core).then(res => {
-  supportedVersions.value = sortSupportedVersions(core, res.data.data.versions);
+  supportedVersions.value = sortSupportedVersions(<string>core, res.data.data.versions);
   if (supportedVersions.value.length !== 0) {
     if (version.value === undefined) {
       // 路径里没有版本就重定向到一个版本
@@ -47,7 +47,7 @@ axios.get(BASE_URL + 'core/' + core).then(res => {
 function getVersions() {
   loadStatus.value = LoadingStatus.LOADING;
   axios.get(BASE_URL + 'core/' + core + '/' + version.value).then(res => {
-    versionList.value = sortCoreVersions(core, res.data.data.builds);
+    versionList.value = sortCoreVersions(<string>core, res.data.data.builds);
     loadStatus.value = LoadingStatus.SUCCESS;
   }).catch(e => {
     console.error(e);

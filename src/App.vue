@@ -5,7 +5,7 @@ import Loading from './components/Loading.vue'
 import LoadingStatus from "./utils/enums/LoadingStatus.ts";
 import Error from "./components/Error.vue";
 import router from "./router";
-import {useDarkMode} from "./utils/darkmode.ts";
+import {DarkMode, useDarkMode} from "./utils/darkmode.ts";
 
 useDarkMode().loadTheme();
 
@@ -55,8 +55,8 @@ function h2ColorChange(color: number[]) {
   }
 }
 
-function changeTheme(event) {
-  let target
+function changeTheme(event: MouseEvent) {
+  let target: DarkMode
   switch (useDarkMode().value) {
     case 'auto':
       target = 'light';

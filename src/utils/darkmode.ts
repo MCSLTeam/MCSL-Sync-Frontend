@@ -110,7 +110,7 @@ function changeTheme(
         case 'viewTransition':
             // 扩散动画
             (() => {
-                if (!document.startViewTransition) {
+                if (!(<any>document).startViewTransition) {
                     // 浏览器不支持ViewTransition就使用渐变
                     changeTheme(darkMode, event, 'fade', force);
                     return;
@@ -123,7 +123,7 @@ function changeTheme(
                 `;
 
                 // 加载过渡动画
-                const viewTransition = document.startViewTransition(() => {
+                const viewTransition = (<any>document).startViewTransition(() => {
                     toggleDark();
                 });
 
@@ -140,7 +140,7 @@ function changeTheme(
                         `circle(0px at ${x}px ${y}px)`,
                         `circle(${endRadius}px at ${x}px ${y}px)`,
                     ];
-                    document.documentElement.animate(
+                    <any>document.documentElement.animate(
                         {
                             clipPath: darken
                                 ? clipPath
