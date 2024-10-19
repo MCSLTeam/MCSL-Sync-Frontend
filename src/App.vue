@@ -1,14 +1,29 @@
 <script setup lang="ts">
-import {onMounted, onUnmounted, ref} from "vue";
+import {computed, onMounted, onUnmounted, ref} from "vue";
 import {mainLoadingStatus, statistics} from "./main.ts";
 import Loading from './components/Loading.vue'
 import LoadingStatus from "./utils/enums/LoadingStatus.ts";
 import Error from "./components/Error.vue";
 import router from "./router";
+import {useDarkMode} from "./utils/darkmode.ts";
+
+useDarkMode().loadTheme();
 
 const title = ref();
 const frontendVersion = import.meta.env.PACKAGE_VERSION;
 let interval: number = -1;
+
+const theme = computed(() => {
+  const theme = useDarkMode().value
+  switch (theme) {
+    case 'auto':
+      return '系统';
+    case 'dark':
+      return '深色';
+    default:
+      return '浅色';
+  }
+})
 
 onMounted(() => {
   let titleColor1 = [0x19, 0xE8, 0xA2, 0, 0, 0];
@@ -40,6 +55,23 @@ function h2ColorChange(color: number[]) {
   }
 }
 
+function changeTheme(event) {
+  let target
+  switch (useDarkMode().value) {
+    case 'auto':
+      target = 'light';
+      break;
+    case "light":
+      target = 'dark';
+      break;
+    case 'dark':
+    default:
+      target = 'auto';
+      break;
+  }
+  useDarkMode().changeTheme(target, event)
+}
+
 onUnmounted(() => {
   if (interval !== -1)
     clearInterval(interval);
@@ -60,8 +92,11 @@ onUnmounted(() => {
       <a href="https://apidoc.sync.mcsl.com.cn/" target="_blank">访问 API 文档</a>
       <span>&nbsp;|&nbsp;</span>
       <router-link to="/nodes">节点列表</router-link>
+      <span>&nbsp;|&nbsp;</span>
+      <a href="javascript:void(0)" @click="changeTheme">主题：{{ theme }}</a>
       <h6>MCSL-Sync-Frontend v{{ frontendVersion }}<br>MCSL-Sync-Backend&ensp;{{ statistics.version }}</h6>
-      <h5>©2022 - {{ new Date().getFullYear() }} <a href="https://mcsl.com.cn/">MCSL开发组</a> | <a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2023001164号-2</a></h5>
+      <h5>©2022 - {{ new Date().getFullYear() }} <a href="https://mcsl.com.cn/">MCSL开发组</a> | <a
+          href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2023001164号-2</a></h5>
     </div>
     <div class="router-container">
       <router-view/>
@@ -174,11 +209,11 @@ onUnmounted(() => {
   justify-content: center;
   align-items: center;
   height: calc(100% - 5rem);
-  max-height: 32.5rem;
+  max-height: 33rem;
   width: calc(100% - 30rem);
   min-width: 20rem;
   padding: 2rem;
-  background: #ffffff55;
+  background: var(--bg-color-transparent);
   backdrop-filter: blur(5px);
   border-radius: 1.5rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
@@ -190,6 +225,10 @@ onUnmounted(() => {
     height: calc(100% - 15rem);
     max-height: unset;
   }
+}
+
+[dark] .router-container {
+  box-shadow: inset 0.1rem 0.1rem 0.2rem rgba(255, 255, 255, 0.05), 0.2rem 0.2rem 0.2rem rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 768px) {

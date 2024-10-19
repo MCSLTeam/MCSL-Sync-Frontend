@@ -23,7 +23,7 @@ defineProps({
   width: 2rem;
   height: 2rem;
   border-radius: 114rem;
-  border: 1px solid #dddddd99;
+  border: 1.5px solid var(--text-color-secondary);
   background: #ffffff00;
   color: var(--text-color-regular);
   transition: ease-in-out 0.3s;
@@ -34,5 +34,9 @@ defineProps({
   background: #ffffff77;
   border-color: var(--color-primary);
   color: var(--color-primary);
+}
+
+[dark] .back-btn:hover {
+  background: #31323377;
 }
 </style>

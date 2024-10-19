@@ -5,6 +5,16 @@
     --text-color-regular: #606266;
     --text-color-secondary: #909399;
     --color-primary: #409eff;
+    --bg-color-transparent: #ffffff55;
+    color-scheme: light;
+}
+
+[dark] {
+    --text-color-primary: #e5eaf3;
+    --text-color-regular: #cfd3dc;
+    --text-color-secondary: #a3a6ad;
+    --bg-color-transparent: #5a5b5c55;
+    color-scheme: dark;
 }
 
 * {
@@ -31,25 +41,32 @@ body {
     justify-content: center;
     align-items: center;
     border: none;
-    background: linear-gradient(135deg, #d9ebff, 5%, #fdfeff);
+    background: linear-gradient(135deg, #d9ebff 5%, #fdfeff);
 }
 
-.el-link {
-    transition: ease-in-out 0.3s;
+[dark] #app {
+    background: linear-gradient(135deg, #08254c, #0a0a0a);
 }
 
-.el-overlay-dialog {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
+/* 主题切换过渡动画 */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }
 
-.el-dialog {
-    margin: 0 !important;
-    border-radius: 10px !important;
+html[dark]::view-transition-old(root) {
+    z-index: 1;
 }
 
-.el-form-item__content {
-    gap: 5px;
+html[dark]::view-transition-new(root) {
+    z-index: 999;
+}
+
+::view-transition-old(root) {
+    z-index: 999;
+}
+
+::view-transition-new(root) {
+    z-index: 1;
 }

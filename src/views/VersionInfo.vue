@@ -52,38 +52,49 @@ function download() {
 <template>
   <Back :to="'/core/' + core"/>
   <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心信息中..."/>
-  <div class="version-info" v-else-if="loadStatus === LoadingStatus.SUCCESS">
-    <img :src="getCoreIcon(<string>core)" alt=""/>
-    <div>
-      <h2>{{ version }}</h2>
-      <h3>核心类型：{{ core }}</h3>
-      <h3>支持版本：{{ supportedVersion }}</h3>
-      <h3>同步时间：{{
-          versionInfo.build.sync_time === '1970-01-01T00:00:00Z' ? '未同步' : versionInfo.build.sync_time
-        }}</h3>
-      <button @click="download" :disabled="versionInfo.build.download_url.startsWith('errorcore')">
-        {{ versionInfo.build.download_url.startsWith('errorcore') ? '无法获取下载链接' : '立即下载' }}
-      </button>
+  <div class="scrollbar" v-else-if="loadStatus === LoadingStatus.SUCCESS">
+    <div class="version-info">
+      <img :src="getCoreIcon(<string>core)" alt=""/>
+      <div>
+        <h2>{{ version }}</h2>
+        <div>
+          <h3>核心类型：{{ core }}</h3>
+          <h3>支持版本：{{ supportedVersion }}</h3>
+          <h3>同步时间：{{
+              new Date(versionInfo.build.sync_time === '1970-01-01T00:00:00Z' ? '未同步' : versionInfo.build.sync_time).toLocaleString()
+            }}</h3>
+        </div>
+        <button @click="download" :disabled="versionInfo.build.download_url.startsWith('errorcore')">
+          {{ versionInfo.build.download_url.startsWith('errorcore') ? '无法获取下载链接' : '立即下载' }}
+        </button>
+      </div>
     </div>
   </div>
   <Error v-else :message="'加载核心版本列表失败！<br/>' + loadStatus"/>
 </template>
 
 <style scoped>
+.scrollbar {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow: auto;
+  height: 100%;
+}
+
 .version-info {
   margin: 0.5rem auto;
   display: flex;
   justify-content: start;
   align-items: center;
   border-radius: 2rem;
-  background: #ffffffdd;
+  background: var(--bg-color-transparent);
   backdrop-filter: blur(5px);
-  width: 80%;
+  width: fit-content;
   height: fit-content;
-  max-height: calc(100% - 7rem);
   gap: 2rem;
   padding: 1rem;
-  border: 1.5px solid #dddddd55;
+  border: 1.5px solid var(--bg-color-transparent);
   transition: ease-in-out 0.3s;
   @media (max-width: 768px) {
     flex-direction: column;
@@ -91,8 +102,18 @@ function download() {
   }
 }
 
+@media (max-width: 768px) {
+  .version-info > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .version-info img {
   height: 100%;
+  max-width: 15rem;
   border-radius: 1rem;
   flex-shrink: 0;
   @media (max-width: 768px) {
@@ -102,7 +123,7 @@ function download() {
 }
 
 .version-info h2 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   margin: 0.7rem 0;
   color: var(--text-color-primary);
@@ -112,7 +133,7 @@ function download() {
 }
 
 .version-info h3 {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 450;
   margin: 0.2rem 0;
   color: var(--text-color-regular);

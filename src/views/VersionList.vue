@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Loading from '../components/Loading.vue'
-import { Ref, ref } from "vue";
+import {Ref, ref} from "vue";
 import LoadingStatus from "../utils/enums/LoadingStatus.ts";
-import { BASE_URL } from "../main.ts";
+import {BASE_URL} from "../main.ts";
 import Error from "../components/Error.vue";
 import axios from "axios";
 import router from "../router";
 import Back from "../components/Back.vue";
-import { getCoreIcon } from "../utils/util.ts";
+import {getCoreIcon, sortCoreVersions, sortSupportedVersions} from "../utils/util.ts";
 
 const core = router.currentRoute.value.params.core;
 let version: Ref<String | undefined> = ref(undefined);
@@ -19,7 +19,7 @@ const versionList = ref([]);
 
 // 获取支持的版本列表
 axios.get(BASE_URL + 'core/' + core).then(res => {
-  supportedVersions.value = res.data.data.versions;
+  supportedVersions.value = sortSupportedVersions(core, res.data.data.versions);
   if (supportedVersions.value.length !== 0) {
     if (version.value === undefined) {
       // 路径里没有版本就重定向到一个版本
@@ -47,7 +47,7 @@ axios.get(BASE_URL + 'core/' + core).then(res => {
 function getVersions() {
   loadStatus.value = LoadingStatus.LOADING;
   axios.get(BASE_URL + 'core/' + core + '/' + version.value).then(res => {
-    versionList.value = res.data.data.builds;
+    versionList.value = sortCoreVersions(core, res.data.data.builds);
     loadStatus.value = LoadingStatus.SUCCESS;
   }).catch(e => {
     console.error(e);
@@ -67,15 +67,15 @@ function changeVersion(e: Event) {
 </script>
 
 <template>
-  <Back />
-  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心版本列表中..." />
+  <Back/>
+  <Loading v-if="loadStatus === LoadingStatus.LOADING" message="加载服务端核心版本列表中..."/>
   <div class="version-container" v-else-if="loadStatus === LoadingStatus.SUCCESS">
     <select :value="version" @change="changeVersion">
       <option v-for="version in supportedVersions" :value="version"> {{ version }}</option>
     </select>
     <div class="versions">
       <div class="version" v-for="ver in versionList" @click="router.push('/core/' + core + '/' + version + '/' + ver)">
-        <img :src="getCoreIcon(<string>core)" alt="" />
+        <img :src="getCoreIcon(<string>core)" alt=""/>
         <div>
           <h2>{{ ver }}</h2>
           <h3>支持版本：{{ version }}</h3>
@@ -83,7 +83,7 @@ function changeVersion(e: Event) {
       </div>
     </div>
   </div>
-  <Error v-else :message="'加载核心版本列表失败！<br/>' + loadStatus" />
+  <Error v-else :message="'加载核心版本列表失败！<br/>' + loadStatus"/>
 </template>
 
 <style scoped>
@@ -100,19 +100,23 @@ function changeVersion(e: Event) {
   justify-content: start;
   align-items: center;
   border-radius: 1.5rem;
-  background: #ffffffdd;
+  background: var(--bg-color-transparent);
   backdrop-filter: blur(5px);
   width: calc(100% - 2rem - 3px);
   height: 4rem;
   gap: 1rem;
   padding: 1rem;
-  border: 1.5px solid #dddddd55;
+  border: 1.5px solid var(--bg-color-transparent);
   transition: ease-in-out 0.3s;
   cursor: pointer;
 }
 
 .version:hover {
-  border: 1.5px solid #dddddddd;
+  border-color: #dddddddd;
+}
+
+[dark] .version:hover {
+  border-color: var(--text-color-secondary);
 }
 
 .version img {
@@ -173,6 +177,11 @@ function changeVersion(e: Event) {
 
 .version-container select:hover {
   background: #ffffff77;
+  color: var(--color-primary);
   border-color: var(--color-primary);
+}
+
+[dark] .version-container select:hover {
+  background: #31323377;
 }
 </style>

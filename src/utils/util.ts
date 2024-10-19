@@ -131,16 +131,119 @@ export function getCoreType(name: string) {
 }
 
 export function formatNodeClientType(type: string) {
-    switch (type) {
+    switch (type.toLowerCase()) {
         case 'nodeside':
-        case 'Nodeside':
         case 'nodeclient':
-        case 'Nodeclient':
             return 'NodeClient';
         case 'alist':
-        case 'Alist':
             return 'AList';
         default:
             return '未知';
     }
+}
+
+export function sortSupportedVersions(core: String, versions: string[]) {
+    switch (core) {
+        case 'Arclight':
+            const getArclightVersion = (version: String) => {
+                switch (version.toLowerCase()) {
+                    case 'feudalkings':
+                        return '1.21'
+                    case 'whisper':
+                        return '1.20.4'
+                    case 'net':
+                        return '1.20.2'
+                    case 'trials':
+                        return '1.20'
+                    case 'executions':
+                        return '1.19.4'
+                    case 'greathorn':
+                        return '1.19.3'
+                    case 'horn':
+                        return '1.19'
+                    default:
+                        return version
+                }
+            }
+            return versions.sort((a, b) => {
+                return compareSemver(getArclightVersion(a), getArclightVersion(b))
+            });
+        case 'BungeeCord':
+            const getBungeeCordVersion = (version: String) => {
+                switch (version.toLowerCase()) {
+                    case 'latest':
+                        return '2.114.514'
+                    default:
+                        return version
+                }
+            }
+            return versions.sort((a, b) => {
+                return compareSemver(getBungeeCordVersion(a), getBungeeCordVersion(b))
+            });
+        case 'NukkitX':
+            return versions.sort()
+        default:
+            return versions.sort(compareSemver);
+    }
+}
+
+export function sortCoreVersions(core: String, versions: string[]) {
+    switch (core) {
+        case 'BungeeCord':
+        case 'CraftBukkit':
+        case 'Spigot':
+            return versions.sort()
+        case 'SpongeForge':
+        case 'SpongeVanilla':
+        case 'Vanilla':
+            const removeLetters = (version: String) => {
+                return version.replace(/[^\d.]+/, '')
+            }
+            return versions.sort((a, b) => {
+                const aParts = removeLetters(a).split(/[-.]/);
+                const bParts = removeLetters(b).split(/[-.]/);
+                for (let i = 0; i < Math.max(aParts.length, bParts.length); i++) {
+                    const aPart = parseInt(aParts[i] ?? '0');
+                    const bPart = parseInt(bParts[i] ?? '0');
+                    if (aPart < bPart) return 1;
+                    if (aPart > bPart) return -1;
+                }
+                return 0
+            })
+        default:
+            const removeLettersBefore = (version: String) => {
+                return version.replace(/[^\d.]+/, '')
+            }
+            return versions.sort((a, b) => {
+                return compareSemver(removeLettersBefore(a), removeLettersBefore(b))
+            });
+    }
+}
+
+function compareSemver(a: string, b: string) {
+    const aPartsA = a.split('-')[0].split('.');
+    const bPartsA = b.split('-')[0].split('.');
+    const aPartB = a.split('-')[1] ?? '';
+    const bPartB = b.split('-')[1] ?? '';
+    for (let i = 0; i < Math.max(aPartsA.length, bPartsA.length); i++) {
+        const aPartA = parseInt(aPartsA[i] ?? '0');
+        const bPartA = parseInt(bPartsA[i] ?? '0');
+        if (aPartA < bPartA) return 1;
+        if (aPartA > bPartA) return -1;
+    }
+    return comparePartB(aPartB, bPartB)
+}
+
+function comparePartB(a: string, b: string) {
+    if (a.startsWith('rc') && b.startsWith('rc') || a.startsWith('pre') && b.startsWith('pre')) {
+        const aNum = parseInt(a.slice(2)) || 0;
+        const bNum = parseInt(b.slice(2)) || 0;
+        if (aNum < bNum) return 1;
+        else if (aNum > bNum) return -1;
+        else return 0
+    } else if (a.startsWith('rc') && b.startsWith('pre'))
+        return -1;
+    else if (a.startsWith('pre') && b.startsWith('rc'))
+        return 1;
+    else return a.localeCompare(b)
 }

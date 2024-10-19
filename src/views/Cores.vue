@@ -98,14 +98,23 @@ function search(text?: string) {
   border-radius: 0.5rem;
   padding: 0 8px;
   transition: 0.3s ease-in-out;
+  background: var(--bg-color-transparent);
+}
+
+[dark] .search {
+  border-color: var(--bg-color-transparent);
 }
 
 .search:hover {
   border-color: var(--text-color-primary);
 }
 
+[dark] .search:hover {
+  border-color: var(--text-color-secondary);
+}
+
 .search:focus {
-  border-color: var(--color-primary);
+  border-color: var(--color-primary) !important;
 }
 
 .core {
@@ -113,21 +122,25 @@ function search(text?: string) {
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
-  background: #ffffffdd;
+  background: var(--bg-color-transparent);
   backdrop-filter: blur(5px);
   width: 100%;
   height: 4rem;
-  max-width: 14rem;
+  max-width: 12rem;
   margin: 0.5rem;
   gap: 1rem;
   padding: 0.5rem;
-  border: 1.5px solid #dddddd55;
+  border: 1.5px solid var(--bg-color-transparent);
   transition: ease-in-out 0.3s;
   cursor: pointer;
 }
 
 .core:hover {
-  border: 1.5px solid #dddddddd;
+  border-color: #dddddddd;
+}
+
+[dark] .core:hover {
+  border-color: var(--text-color-secondary);
 }
 
 .core div {
@@ -136,13 +149,13 @@ function search(text?: string) {
   align-items: start;
   flex-direction: column;
   border-radius: 0.5rem;
-  width: 9rem;
+  width: 7rem;
 }
 
 .core h3 {
   margin: 0;
-  font-size: 1.25rem;
-  width: 9rem;
+  font-size: 1.1rem;
+  width: 7rem;
   word-break: break-all;
   font-weight: 500;
   color: var(--text-color-primary);
@@ -153,7 +166,7 @@ function search(text?: string) {
 
 .core h4 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: var(--text-color-secondary);
   @media (max-width: 768px) {
