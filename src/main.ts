@@ -28,6 +28,7 @@ interface nodeList {
     "endpoint": string,
     "name": string,
     "type": string,
+    "alist_subpath": string,
 }
 
 const app = createApp(App);

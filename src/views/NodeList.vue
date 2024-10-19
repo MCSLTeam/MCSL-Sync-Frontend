@@ -10,7 +10,7 @@ import { statistics } from "../main.ts";
     <div class="nodes">
       <div class="node" v-for="node in statistics.config.node_list" :key="node.name">
         <h3>{{ node.name }}</h3>
-        <p>地址：<span>{{ node.endpoint }}</span></p>
+        <p>地址：<span>{{ node.endpoint }}<span v-if="formatNodeClientType(node.type) === 'AList'">{{ node.alist_subpath.startsWith('/') ? node.alist_subpath.slice(1) : node.alist_subpath }}</span></span></p>
         <p>类型：<span>{{ formatNodeClientType(node.type) }}</span></p>
       </div>
     </div>
