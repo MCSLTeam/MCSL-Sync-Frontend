@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import Back from "../components/Back.vue";
-import {statistics} from "../main.ts";
+import { formatNodeClientType } from "../utils/util.ts";
+import { statistics } from "../main.ts";
 </script>
 
 <template>
-  <Back/>
+  <Back />
   <div class="node-container">
     <div class="nodes">
-      <div class="node" v-for="node in statistics.config.node_list">
-        <p>{{ node }}</p>
+      <div class="node" v-for="node in statistics.config.node_list" :key="node.name">
+        <p><strong style="font-size: 1.1rem;">{{ node.name }}</strong></p>
+        <p>地址：{{ node.endpoint }}</p>
+        <p>类型：{{ formatNodeClientType(node.type) }}</p>
       </div>
     </div>
   </div>
@@ -20,13 +23,16 @@ import {statistics} from "../main.ts";
   height: calc(100% - 5rem);
   padding: 1rem;
   overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .node {
   margin: 0.5rem auto;
   display: flex;
+  flex-direction: column;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   border-radius: 1rem;
   background: #ffffffdd;
   backdrop-filter: blur(5px);

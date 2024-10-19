@@ -129,3 +129,18 @@ export function getCoreType(name: string) {
             return '未知';
     }
 }
+
+export function formatNodeClientType(type: string) {
+    switch (type) {
+        case 'nodeside':
+        case 'Nodeside':
+        case 'nodeclient':
+        case 'Nodeclient':
+            return 'NodeClient';
+        case 'alist':
+        case 'Alist':
+            return 'AList';
+        default:
+            return '未知';
+    }
+}

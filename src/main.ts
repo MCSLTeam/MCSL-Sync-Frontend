@@ -20,8 +20,14 @@ interface Statistics {
         "port": number,
         "ssl_cert_path": string,
         "ssl_key_path": string,
-        "node_list": []
+        "node_list": nodeList[],
     }
+}
+
+interface nodeList {
+    "endpoint": string,
+    "name": string,
+    "type": string,
 }
 
 const app = createApp(App);
