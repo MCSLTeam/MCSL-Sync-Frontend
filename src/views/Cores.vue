@@ -119,20 +119,23 @@ function search(text?: string) {
 
 .core {
   display: flex;
-  justify-content: center;
   align-items: center;
   border-radius: 1rem;
   background: var(--bg-color-transparent);
   backdrop-filter: blur(5px);
   width: 100%;
   height: 4rem;
-  max-width: 12rem;
   margin: 0.5rem;
   gap: 1rem;
   padding: 0.5rem;
   border: 1.5px solid var(--bg-color-transparent);
   transition: ease-in-out 0.3s;
   cursor: pointer;
+
+  @media (min-width: 75rem) {
+    max-width: 12rem;
+    justify-content: center;
+  }
 }
 
 .core:hover {

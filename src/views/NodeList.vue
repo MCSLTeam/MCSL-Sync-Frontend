@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import Back from "../components/Back.vue";
-import { formatNodeClientType } from "../utils/util.ts";
-import { statistics } from "../main.ts";
+import {formatNodeClientType} from "../utils/util.ts";
+import {statistics} from "../main.ts";
 </script>
 
 <template>
-  <Back />
+  <Back/>
   <div class="node-container">
     <div class="nodes">
       <div class="node" v-for="node in statistics.config.node_list" :key="node.name">
         <h3>{{ node.name }}</h3>
-        <p>地址：<span>{{ node.endpoint }}<span v-if="formatNodeClientType(node.type) === 'AList'">{{ node.alist_subpath.startsWith('/') ? node.alist_subpath.slice(1) : node.alist_subpath }}</span></span></p>
+        <p>地址：<span>{{ node.endpoint }}<span v-if="formatNodeClientType(node.type) === 'AList'">{{ node.alist_subpath.replace(/^\//, '') }}</span></span></p>
         <p>类型：<span>{{ formatNodeClientType(node.type) }}</span></p>
       </div>
     </div>
@@ -35,7 +35,6 @@ import { statistics } from "../main.ts";
   align-items: start;
   border-radius: 1rem;
   background: var(--bg-color-transparent);
-  backdrop-filter: blur(5px);
   width: calc(100% - 2rem - 3px);
   height: fit-content;
   gap: 1rem;
@@ -50,6 +49,7 @@ import { statistics } from "../main.ts";
   color: var(--text-color-primary);
   margin: 0;
   width: 100%;
+  word-break: break-all;
 }
 
 .node p {
@@ -58,6 +58,7 @@ import { statistics } from "../main.ts";
   color: var(--text-color-regular);
   margin: 0;
   width: 100%;
+  word-break: break-all;
 }
 
 .node span {

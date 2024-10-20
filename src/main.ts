@@ -1,4 +1,4 @@
-import { createApp, ref } from 'vue'
+import {createApp, ref} from 'vue'
 import './style.css'
 import App from './App.vue'
 import router from './router'
@@ -20,15 +20,13 @@ interface Statistics {
         "port": number,
         "ssl_cert_path": string,
         "ssl_key_path": string,
-        "node_list": nodeList[],
+        "node_list": {
+            "endpoint": string,
+            "name": string,
+            "type": string,
+            "alist_subpath": string,
+        }[],
     }
-}
-
-interface nodeList {
-    "endpoint": string,
-    "name": string,
-    "type": string,
-    "alist_subpath": string,
 }
 
 const app = createApp(App);
