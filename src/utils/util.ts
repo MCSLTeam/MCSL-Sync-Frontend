@@ -13,6 +13,8 @@ export function randomNum(min?: any, max?: any) {
 export function getCoreIcon(name: string) {
     return (() => {
         switch (name) {
+            case 'ZuluJDK':
+                return 'https://www.azul.com/wp-content/themes/azul/assets/img/logo.svg'
             case 'Arclight':
             case 'Lightfall':
             case 'LightfallClient':
@@ -78,6 +80,9 @@ export function getCoreIcon(name: string) {
 
 export function getCoreType(name: string) {
     switch (name) {
+        case 'ZuluJDK':
+            return '运行环境';
+
         case 'Arclight':
         case 'Banner':
         case 'Mohist':
@@ -172,7 +177,7 @@ export function sortSupportedVersions(core: string, versions: string[]) {
             const getBungeeCordVersion = (version: string) => {
                 switch (version.toLowerCase()) {
                     case 'latest':
-                        return '2.114.514'
+                        return '114514.114.514'
                     default:
                         return version
                 }
@@ -195,34 +200,19 @@ export function sortCoreVersions(core: string, versions: string[]) {
             return versions.sort()
         case 'SpongeForge':
         case 'SpongeVanilla':
-        case 'Vanilla':
-            const removeLetters = (version: string) => {
-                return version.replace(/[^\d.]+/, '')
-            }
-            return versions.sort((a, b) => {
-                const aParts = removeLetters(a).split(/[-.]/);
-                const bParts = removeLetters(b).split(/[-.]/);
-                for (let i = 0; i < Math.max(aParts.length, bParts.length); i++) {
-                    const aPart = parseInt(aParts[i] ?? '0');
-                    const bPart = parseInt(bParts[i] ?? '0');
-                    if (aPart < bPart) return 1;
-                    if (aPart > bPart) return -1;
-                }
-                return 0
-            })
         default:
-            const removeLettersBefore = (version: string) => {
-                return version.replace(/[^\d.]+/, '')
+            const removeLetters = (version: string) => {
+                return version.replace(/[^\d.+-]+/, '')
             }
             return versions.sort((a, b) => {
-                return compareSemver(removeLettersBefore(a), removeLettersBefore(b))
+                return compareSemver(removeLetters(a), removeLetters(b))
             });
     }
 }
 
 function compareSemver(a: string, b: string) {
-    const aPartsA = a.split('-')[0].split('.');
-    const bPartsA = b.split('-')[0].split('.');
+    const aPartsA = a.split('-')[0].split(/[.+-]/);
+    const bPartsA = b.split('-')[0].split(/[.+-]/);
     const aPartB = a.split('-')[1] ?? '';
     const bPartB = b.split('-')[1] ?? '';
     for (let i = 0; i < Math.max(aPartsA.length, bPartsA.length); i++) {
