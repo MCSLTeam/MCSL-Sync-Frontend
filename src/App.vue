@@ -96,7 +96,7 @@ onUnmounted(() => {
       <a href="javascript:void(0)" @click="changeTheme">主题：{{ theme }}</a>
       <h6>MCSL-Sync-Frontend v{{ frontendVersion }}<br>MCSL-Sync-Backend&ensp;{{ statistics.version }}</h6>
       <h5>©2022 - {{ new Date().getFullYear() }} <a href="https://mcsl.com.cn/">MCSL开发组</a> | <a
-          href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2023001164号-2</a></h5>
+          href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2025436238号-2</a></h5>
     </div>
     <div class="router-container">
       <router-view/>
